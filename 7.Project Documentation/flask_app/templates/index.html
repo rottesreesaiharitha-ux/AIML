@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Smart Lender — AI Loan Eligibility Assessment{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Machine Learning &middot; Credit Risk</span>
+      <h1>Loan decisions,<br><em>backed by evidence</em>,<br>not guesswork.</h1>
+      <p class="lead">Smart Lender scores loan applications in real time using an XGBoost model trained on historical repayment outcomes — giving credit officers a fast, consistent first read before manual review.</p>
+      <div class="btn-row">
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">Check Eligibility &rarr;</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-ghost">View Model Accuracy</a>
+      </div>
+    </div>
+    <div class="ledger-card">
+      <div class="stamp-row">
+        <div>
+          <div class="ledger-title">Sample Assessment</div>
+          <div class="id">REF LP001988</div>
+        </div>
+        <div class="seal">APPROVED<br>81.1%</div>
+      </div>
+      <div class="ledger-rows">
+        <div><span>Applicant income</span><span>&#8377;5,417</span></div>
+        <div><span>Credit history</span><span>Clear</span></div>
+        <div><span>Loan amount</span><span>&#8377;267,000</span></div>
+        <div><span>Property area</span><span>Urban</span></div>
+        <div><span>Model used</span><span>XGBoost</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From application to answer in seconds</h2>
+      <p>Four models were trained and compared; the strongest performer runs behind every prediction you see.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Enter applicant details</h3>
+        <p>Income, employment, credit history, loan amount and term — the same fields a credit officer reviews manually.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Model scores the application</h3>
+        <p>The trained XGBoost classifier weighs each factor against patterns learned from historical loan outcomes.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Get a reasoned result</h3>
+        <p>An approval or rejection call arrives with a confidence score and risk level to guide next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Model performance</span>
+      <h2>Four algorithms, one clear winner</h2>
+      <p>Decision Tree, Random Forest, K-Nearest Neighbors and XGBoost were each trained and evaluated on held-out applicants.</p>
+    </div>
+    <div class="grid-4">
+      <div class="stat"><div class="value">94.7%</div><div class="label">XGBoost &middot; Train Acc.</div></div>
+      <div class="stat"><div class="value">81.1%</div><div class="label">XGBoost &middot; Test Acc.</div></div>
+      <div class="stat"><div class="value">614</div><div class="label">Applicants in dataset</div></div>
+      <div class="stat"><div class="value">4</div><div class="label">Models compared</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Built for</span>
+      <h2>Financial analysts &amp; credit officers</h2>
+      <p>Reduce non-performing assets and speed up credit evaluation without replacing human judgment.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Scenario</div>
+        <h4>Fast-track approval</h4>
+        <p>Salaried applicant, good credit history, stable income — approved with high confidence, no manual review needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Scenario</div>
+        <h4>High-risk detection</h4>
+        <p>Irregular self-employment income and no credit history — flagged for further scrutiny before proceeding.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Scenario</div>
+        <h4>Batch evaluation</h4>
+        <p>Analysts evaluate multiple applicants during high-volume periods, cutting review time while keeping accuracy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

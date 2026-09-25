@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}About — Smart Lender{% endblock %}
+{% block content %}
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">About the project</span>
+      <h2>Smart Lender</h2>
+      <p>A machine-learning-powered web application designed to predict the creditworthiness of loan applicants, enabling banks and financial institutions to make faster, data-driven loan approval decisions.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="num">Models</div>
+        <h3>Four classifiers compared</h3>
+        <p>Decision Tree, Random Forest, K-Nearest Neighbors, and XGBoost were each trained and evaluated; XGBoost was selected for deployment.</p>
+      </div>
+      <div class="card">
+        <div class="num">Features</div>
+        <h3>11 applicant attributes</h3>
+        <p>Gender, marital status, education, employment, income, loan amount, loan term, credit history and property area.</p>
+      </div>
+      <div class="card">
+        <div class="num">Deployment</div>
+        <h3>Python, Flask &amp; IBM Cloud</h3>
+        <p>The trained model is served through a Flask web application, designed for deployment on IBM Cloud infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Target users</h2>
+      <p>Built to support the people who evaluate credit risk every day.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Financial analysts</h4>
+        <p>Batch-evaluate applicants quickly while maintaining accuracy and compliance.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Credit officers</h4>
+        <p>Fast-track low-risk applications and flag high-risk ones for further scrutiny.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Banking professionals</h4>
+        <p>Reduce non-performing assets with a consistent, data-driven first read.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

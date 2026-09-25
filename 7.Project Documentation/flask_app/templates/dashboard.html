@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Model Insights — Smart Lender{% endblock %}
+{% block content %}
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Model insights</span>
+      <h2>How the models compare</h2>
+      <p>Each classifier was trained on the same 80/20 split of the loan applicant dataset. XGBoost was selected as the production model.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="mono">Train Acc.</th>
+            <th class="mono">Test Acc.</th>
+            <th class="mono">Precision</th>
+            <th class="mono">Recall</th>
+            <th class="mono">F1 Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in comparison %}
+          <tr class="{{ 'best' if row.Model == best_info.get('best_model') else '' }}">
+            <td>{{ row.Model }}{% if row.Model == best_info.get('best_model') %} &#9733;{% endif %}</td>
+            <td class="mono">{{ row.Train_Accuracy }}%</td>
+            <td class="mono">{{ row.Test_Accuracy }}%</td>
+            <td class="mono">{{ row.Precision }}%</td>
+            <td class="mono">{{ row.Recall }}%</td>
+            <td class="mono">{{ row.F1_Score }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px; color:var(--ink-soft); font-size:0.88rem;">&#9733; = model currently deployed in the prediction engine.</p>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Deployed model</span>
+      <h2>{{ best_info.get('best_model', 'XGBoost') }}</h2>
+      <p>Selected for its balance of accuracy and generalization on unseen applicants.</p>
+    </div>
+    <div class="grid-4">
+      <div class="stat"><div class="value">{{ best_info.get('train_accuracy', '—') }}%</div><div class="label">Train Accuracy</div></div>
+      <div class="stat"><div class="value">{{ best_info.get('test_accuracy', '—') }}%</div><div class="label">Test Accuracy</div></div>
+      <div class="stat"><div class="value">Python</div><div class="label">Language</div></div>
+      <div class="stat"><div class="value">Flask</div><div class="label">Serving layer</div></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

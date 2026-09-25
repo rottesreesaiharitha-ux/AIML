@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Assessment Result — Smart Lender{% endblock %}
+{% block content %}
+<section>
+  <div class="wrap result-wrap">
+    <div class="result-seal {{ 'approved' if approved else 'rejected' }}">
+      <div class="status">{{ 'APPROVED' if approved else 'DECLINED' }}</div>
+      <div class="pct">{{ confidence }}% confidence</div>
+    </div>
+
+    <span class="eyebrow" style="color:var(--gold)">Assessment for {{ applicant_name }}</span>
+    <h2>{{ 'This application looks eligible for approval.' if approved else 'This application is likely to be declined.' }}</h2>
+    <p style="color:var(--ink-soft)">
+      {% if approved %}
+        Based on the details provided, the model predicts a strong likelihood of loan repayment.
+      {% else %}
+        Based on the details provided, the model flags this application as high risk. Manual review and further documentation are recommended.
+      {% endif %}
+    </p>
+
+    <div class="result-meta">
+      <div class="item">
+        <div class="label">Decision</div>
+        <div class="val">{{ 'Approved' if approved else 'Declined' }}</div>
+      </div>
+      <div class="item">
+        <div class="label">Confidence</div>
+        <div class="val">{{ confidence }}%</div>
+      </div>
+      <div class="item">
+        <div class="label">Risk level</div>
+        <div class="val">{{ risk_level }}</div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="justify-content:center">
+      <a href="{{ url_for('predict') }}" class="btn btn-dark">Run another assessment</a>
+      <a href="{{ url_for('dashboard') }}" class="btn btn-ghost" style="border-color:var(--line); color:var(--ink)">View model insights</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

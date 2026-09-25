@@ -1,0 +1,5 @@
+Model,Train_Accuracy,Test_Accuracy,Precision,Recall,F1_Score
+KNN,86.8,91.9,90.1,100.0,94.8
+Random Forest,89.4,91.1,89.2,100.0,94.3
+Decision Tree,88.6,88.6,90.5,94.5,92.5
+XGBoost,95.7,88.6,89.7,95.6,92.6
